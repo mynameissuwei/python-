@@ -56,9 +56,9 @@ def get_bond_info():
 def ranking(df,condition1='dblow',condition2='curr_iss_amt'):
     NUM = 40
     HoldNum = 10
-    df = df[['bond_nm','dblow','curr_iss_amt']].sort_values(by=condition1,ascending=True)[:NUM]
-    df["curr_iss_amt"] = pd.to_numeric(df["curr_iss_amt"],errors='coerce')[:HoldNum]
-    df = df.sort_values(by=condition2,ascending=True)
+    df = df.sort_values(by=condition1,ascending=True)[:NUM]
+    df["curr_iss_amt"] = pd.to_numeric(df["curr_iss_amt"],errors='coerce')
+    df = df.sort_values(by=condition2,ascending=True)[:HoldNum]
     return df
 
 
@@ -69,7 +69,7 @@ def main():
     df = df[['bond_id','bond_nm','premium_rt','price','dblow','curr_iss_amt']]
     filter_data = ranking(df.copy())
     print(filter_data,'filter_data')
-    df.to_excel('jsl_{}.xlsx'.format(today), encoding='utf8')
+    filter_data.to_excel('jsl_{}.xlsx'.format(today), encoding='utf8')
 
 
 if __name__ == '__main__':
