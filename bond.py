@@ -67,10 +67,12 @@ def main():
     today = datetime.datetime.now().strftime('%Y%m%d')
     ret = get_bond_info()
     df = pd.DataFrame(ret)
-    df = df[['bond_id','bond_nm','premium_rt','price','dblow','curr_iss_amt','increase_rt']]
-    filter_data = ranking(df.copy())
-    print(filter_data,'filter_data')
-    filter_data.to_excel('双低_{}.xlsx'.format(today), encoding='utf8')
+    print(df,'dff')
+    df = df[['bond_id','bond_nm','premium_rt','price','increase_rt']]
+    
+    # filter_data = ranking(df.copy())
+    # print(filter_data,'filter_data')
+    df.to_excel('折价_{}.xlsx'.format(today), encoding='utf8')
 
 
 if __name__ == '__main__':
