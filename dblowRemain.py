@@ -4,6 +4,8 @@ import time
 import requests
 import pandas as pd
 import datetime
+import wx_send
+
 
 cookie = 'kbzw__Session=4rif8h52gb6c08dol6kcv2a2q2; kbz_newcookie=1; kbzw_r_uname=%E4%BA%8F%E6%8E%89%E5%BD%A9%E7%A4%BC%E5%8F%98%E5%89%A9%E7%94%B7; kbzw__user_login=7Obd08_P1ebax9aXWxwFRwUAWDUKVwUwXgQBXvUgSQoYmLKg6MLj1Ovo583XyaKa2cPYrKfcl6GYqd7XzN7S2pmvxtmqptvFo5bXsqeaso2yj-vK29XQo5apmKSvrIq0mcyj1L6ixOLyytzN1aiql6mMn6_XxODl5-fU2JyUwuPd3tiXr9fEl8bGmLmQkqTYpp7Yo6CCt9Hn49jPxtKs3e2knqyjpZWsgZ_Cu8yuvI2U5d7U3oy-x9nM5qCTu8ni0OHepKKvmqeQqpetq6GslpC01d_W2-KbrJWtj6qt; Hm_lvt_164fe01b1433a19b507595a43bf58262=1637300441,1637300723; Hm_lpvt_164fe01b1433a19b507595a43bf58262=1637382266'
 
@@ -71,6 +73,9 @@ def main():
     filter_data = ranking(df.copy())
     print(filter_data,'filter_data')
     filter_data.to_excel('双低_{}.xlsx'.format(today), encoding='utf8')
+    wx_send.wx_send(title='每日双低加规模可转债', content=filter_data)
+
+
 
 
 if __name__ == '__main__':

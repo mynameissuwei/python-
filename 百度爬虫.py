@@ -4,7 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 def main():
     driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.get('http://www.google.com/');
+    driver.get('http://www.hupu.com/');
 
     time.sleep(5)  # Let the user actually see something!
 
