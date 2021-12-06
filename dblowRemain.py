@@ -20,6 +20,7 @@ headers = {
     "Cookie": cookie
 }
 
+double_blow_string = ''
 
 def get_bond_info():
     ts = int(time.time() * 1000)
@@ -59,7 +60,7 @@ def ranking(df,condition1='dblow',condition2='curr_iss_amt'):
     NUM = 40
     HoldNum = 10
     df = df.sort_values(by=condition1,ascending=True)[:NUM]
-    # print(df,'dff')
+    double_blow_string = ' '.join(list(df['bond_nm']))
     df["curr_iss_amt"] = pd.to_numeric(df["curr_iss_amt"],errors='coerce')
     df = df.sort_values(by=condition2,ascending=True)[:HoldNum]
     return df
@@ -73,7 +74,11 @@ def main():
     filter_data = ranking(df.copy())
     print(filter_data,'filter_data')
     filter_data.to_excel('双低_{}.xlsx'.format(today), encoding='utf8')
-    wx_send.wx_send(title='每日双低加规模可转债', content=filter_data)
+    resultString = ' '.join(list(filter_data['bond_nm'])) + '\n' + double_blow_string
+    print(resultString,'resultString')
+    wx_send.wx_send(title='每日双低加规模可转债', content=resultString)
+
+
 
 
 
