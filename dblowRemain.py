@@ -72,7 +72,6 @@ def main():
     df = pd.DataFrame(ret)
     df = df[['bond_id','bond_nm','premium_rt','price','dblow','curr_iss_amt','increase_rt']]
     filter_data = ranking(df.copy())
-    print(filter_data,'filter_data')
     filter_data.to_excel('双低_{}.xlsx'.format(today), encoding='utf8')
     resultString = ' '.join(list(filter_data['bond_nm'])) + '\n' + double_blow_string
     print(resultString,'resultString')
