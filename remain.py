@@ -162,16 +162,16 @@ def main(): # 主函数
     filter_low_small_data = ranking_low_small(df.copy())
     filter_low_data = ranking_low(df.copy())
     filter_dblow_remain_data = ranking_dblow_small(df.copy())
-    filter_remain_turnover_data = ranking_remain_turnover(df.copy())
-    filter_high_data = ranking_high(df.copy())
+    # filter_remain_turnover_data = ranking_remain_turnover(df.copy())
+    # filter_high_data = ranking_high(df.copy())
     filter_dblow_remain_low_data = ranking_low_small_dblow(df.copy())
 
     filter_low_data.to_excel(writer,'低溢价')
-    filter_low_small_data.to_excel(writer,'低余额40 低溢价10')
+    # filter_low_small_data.to_excel(writer,'低余额40 低溢价10')
     filter_dblow_remain_data.to_excel(writer,'低余额40 双低10')
-    filter_dblow_remain_low_data.to_excel(writer,'低余额40 低溢价20 双低10')
-    filter_remain_turnover_data.to_excel(writer,'低余额前40 换手率前10')
-    filter_high_data.to_excel(writer,'平价底价溢价率 高价10 低溢价')
+    # filter_dblow_remain_low_data.to_excel(writer,'低余额40 低溢价20 双低10')
+    # filter_remain_turnover_data.to_excel(writer,'低余额前40 换手率前10')
+    # filter_high_data.to_excel(writer,'平价底价溢价率 高价10 低溢价')
 
 
 
