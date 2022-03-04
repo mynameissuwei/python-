@@ -25,7 +25,6 @@ double_blow_string = ''
 def get_bond_info():
     ts = int(time.time() * 1000)
     url = 'https://www.jisilu.cn/data/cbnew/cb_list/?___jsl=LST___t={}'.format(ts)
-    githubToken = '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'
     data = {
         "fprice": None,
         "tprice": None,
@@ -73,9 +72,10 @@ def main():
     df = df[['bond_id','bond_nm','premium_rt','price','dblow','curr_iss_amt','increase_rt']]
     filter_data = ranking(df.copy())
     filter_data.to_excel('双低_{}.xlsx'.format(today), encoding='utf8')
-    resultString = ' '.join(list(filter_data['bond_nm'])) + '\n' + double_blow_string
-    print(resultString,'resultString')
-    wx_send.wx_send(title='每日双低加规模可转债', content=resultString)
+    test = pd.read_excel('双低_20220304.xlsx')
+    print(test,'test')
+    # resultString = ' '.join(list(filter_data['bond_nm'])) + '\n' + double_blow_string
+    # wx_send.wx_send(title='每日双低加规模可转债', content=resultString)
 
 
 
